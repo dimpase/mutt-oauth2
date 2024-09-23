@@ -233,9 +233,9 @@ Run "mutt_oauth2.py --help" to learn script usage. To obtain the
 initial set of tokens, run the script specifying a name for a
 disposable token storage file, as well as "--authorize", for example
 using this naming scheme:
-
+```
  mutt_oauth2.py userid@myschool.edu.tokens --verbose --authorize
-
+```
 The script will ask questions and provide some instructions. For the
 flow question:
 
@@ -280,16 +280,16 @@ a mutt registration is the better way to go.
 
 Once you've succeeded authorizing mutt_oauth2.py to obtain tokens, try
 one of the following to see whether IMAP/POP/SMTP are working:
-
+```
  mutt_oauth2.py userid@myschool.edu.tokens --verbose --test
  mutt_oauth2.py userid@myschool.edu.tokens --verbose --debug --test
-
+```
 Without optional parameters, the script simply returns an access token
 (possibly first conducting a behind-the-scenes URL retrieval using a
 stored refresh token to obtain an updated access token). Calling the
 script without optional parameters is how it will be used by
 mutt. Your .muttrc would look something like:
-
+```
  set imap_user="userid@myschool.edu"
  set folder="imap://outlook.office365.com/"
  set smtp_url="smtp://${imap_user}@smtp.office365.com:587/"
@@ -297,4 +297,4 @@ mutt. Your .muttrc would look something like:
  set imap_oauth_refresh_command="/path/to/script/mutt_oauth2.py ${imap_user}.tokens"
  set smtp_authenticators=${imap_authenticators}
  set smtp_oauth_refresh_command=${imap_oauth_refresh_command}
-
+```
